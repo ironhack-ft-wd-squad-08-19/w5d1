@@ -45,7 +45,7 @@ app.get("/artists", (req, res) => {
   spotifyApi
     .searchArtists(search)
     .then(data => {
-      console.log("The received data from the API: ", data.body.artists.items);
+      console.log("The received data from the API: ", data);
       const artists = data.body.artists.items;
 
       // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
@@ -59,7 +59,7 @@ app.get("/artists", (req, res) => {
         }
       });
 
-      res.render("artists", { artistsList: artists });
+      res.render("artists.hbs", { artistsList: artists });
     })
     .catch(err => {
       console.log("The error while searching artists occurred: ", err);
